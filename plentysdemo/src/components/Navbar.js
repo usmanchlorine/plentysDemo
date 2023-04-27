@@ -27,6 +27,13 @@ export default function Navbar() {
     color:'white',
   }
 
+  const searchTextContainer={
+    display:'flex',
+    alignItems:'center',
+    justifyContent:'Center',
+    height:'100%',
+  }
+
   const [SearchContainer,SetSearchContainer]=useState({
     width:'100%',
     zIndex:1,
@@ -79,9 +86,14 @@ export default function Navbar() {
    <>
      {/*container when close*/}
   <div className='container-fluid' id="SearchContainer" style={{...navbar_header,...SearchContainer}}>
-    <div className='Container'>
-    
-      <input className='input' type='text' id="searchContent" placeholder="Search"/>
+    <div className='Container' style={{...searchTextContainer}}>
+
+      <div className='' style={{backgroundColor:'white'}}>
+      <i className='bi bi-search'></i>
+      <input className='border border-0px' type='text' id="searchContent" placeholder="Search"/>
+      <i className='bi bi-x' onClick={toggleSearchHandler}></i>
+      </div>
+      
         
      
 
