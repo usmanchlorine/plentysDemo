@@ -104,7 +104,7 @@ export default function Navbar() {
   <nav className={`navbar navbar-expand-lg px-4`} style={navbar_header}>
     
   <div className="container-fluid">
-  <i class="bi bi-list px-1" style={{...baseTextColor,fontSize:'20px'}}></i>
+  <i className="bi bi-list px-1" style={{...baseTextColor,fontSize:'20px'}}></i>
     <a className="navbar-brand text-white" href="#"><img src='Logo-v3 1.png'></img></a>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
@@ -133,8 +133,8 @@ export default function Navbar() {
         <i className='bi-search text-white' ></i>
         </span>
         
-        <i class="bi bi-whatsapp text-success"></i>
-        <i class="bi bi-cart text-white"></i>
+        <i className="bi bi-whatsapp text-success"></i>
+        <i className="bi bi-cart text-white"></i>
       </span>
       <span style={right_button}>
       <button type="button" className="btn btn-primary">Success</button>
