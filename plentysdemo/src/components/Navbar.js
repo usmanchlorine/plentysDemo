@@ -1,7 +1,9 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
+import './Navbar.css';
 import styles from '../CSSModules/Navbar.module.css'
-export default function Navbar() {
+
+export default function Navbar(props) {
   const navbar_header={
     height:'80px',
     background:'#0B223F'
@@ -33,6 +35,47 @@ export default function Navbar() {
     justifyContent:'Center',
     height:'100%',
   }
+
+
+  const searchInput={
+    width:'max-content',
+    boxShadow: '0 !important',
+    outline: "none"
+  }
+
+  const dropdownStyle={
+    zIndex:2,
+    transition:'all 0.5s ease-in-out',
+    marginLeft:'1.5rem',
+    borderRadius:'0.8rem',
+    backgroundColor:'#E2E8F0',
+    width:'250px'
+  }
+
+  const [isHover, setIsHover] = useState(false);
+
+  const handleMouseEnter = () => {
+     setIsHover(true);
+  };
+  const handleMouseLeave = () => {
+     setIsHover(false);
+  };
+
+
+  const dropdownliststyle = {
+    backgroundColor:isHover?'black':'white'
+  }
+
+
+  const dropdownHeading={
+    fontSize:'1.5rem',
+    fontWeight:'bold',
+    color:'black',
+    marginLeft:'10px'
+    
+  }
+
+  
 
   const [SearchContainer,SetSearchContainer]=useState({
     width:'100%',
@@ -72,6 +115,15 @@ export default function Navbar() {
   
   }
 
+/////////////// data ////////////
+
+const categories=props.data
+
+
+
+
+
+
   
 
 
@@ -88,10 +140,11 @@ export default function Navbar() {
   <div className='container-fluid' id="SearchContainer" style={{...navbar_header,...SearchContainer}}>
     <div className='Container' style={{...searchTextContainer}}>
 
-      <div className='' style={{backgroundColor:'white'}}>
-      <i className='bi bi-search'></i>
-      <input className='border border-0px' type='text' id="searchContent" placeholder="Search"/>
-      <i className='bi bi-x' onClick={toggleSearchHandler}></i>
+      <div className='' style={{backgroundColor:'white',width:'50%'}}>
+     
+      <i className='bi bi-search px-2' style={{width:'10%',color:'#94A3B8'}}></i>
+      <input className='border-0 px-3' type='text' id="searchContent" style={searchInput}  placeholder="Search"/>
+      <i className=''  onClick={toggleSearchHandler} style={{float:'right',width:'5%', boxShadow:'none'}}><img src='Icon (Stroke).png'></img></i>
       </div>
       
         
@@ -104,7 +157,35 @@ export default function Navbar() {
   <nav className={`navbar navbar-expand-lg px-4`} style={navbar_header}>
     
   <div className="container-fluid">
-  <i className="bi bi-list px-1" style={{...baseTextColor,fontSize:'20px'}}></i>
+    
+  <li className="nav-item dropdown">
+        
+  <i className="bi bi-list px-1"  role="button" data-bs-toggle="dropdown" aria-expanded="false"   style={{...baseTextColor,fontSize:'20px'}}></i>
+
+          <ul className="dropdown-menu mt-3 p-2" style={{...baseTextColor,...dropdownStyle }}>
+            <p style={{...dropdownHeading}}>Categories</p>
+            
+            
+            <li className='dropdown'>
+              <ul className='dropdown-menu'>
+                <li>hello</li>
+
+
+              </ul>
+            
+            {categories.map((element)=>{
+              if(element.parentId===1) {
+                return (
+                  <li><a className="dropdown-item" href="#" id='dropdown_item' key={element.childId} > {element.name}<span style={{float:'right'}}><i><img src='icon.png'></img></i></span></a></li>
+                )        
+              }
+
+            })}
+            </li>
+        
+          </ul>
+  </li>
+  
     <a className="navbar-brand text-white" href="#"><img src='Logo-v3 1.png'></img></a>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
@@ -116,7 +197,7 @@ export default function Navbar() {
         </li>
     
         <li className="nav-item dropdown">
-          <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style={{...baseTextColor}}>
+          <a className="nav-link  dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style={{...baseTextColor}}>
             Karachi
           </a>
           <ul className="dropdown-menu" style={{...baseTextColor}}>
