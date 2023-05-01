@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import './Navbar.css';
 import styles from '../CSSModules/Navbar.module.css'
 import { groupBy } from "core-js/actual/array/group-by";
+import { Link } from 'react-router-dom';
 export default function Navbar(props) {
   const navbar_header = {
     height: '80px',
@@ -60,7 +61,7 @@ export default function Navbar(props) {
     setIsHover(true);
   };
   const handleMouseLeave = () => {
-
+    setcards([]);
     setIsHover(false);
 
   
@@ -147,7 +148,7 @@ export default function Navbar(props) {
   };
 
   const result = groupBy(categories, 'parentId');
-
+  const [currentparent,setCurrentParent] =useState(null)
 
 
   // hovering data
@@ -156,6 +157,9 @@ export default function Navbar(props) {
     let child=event.target.getAttribute('childId')
     let parent=event.target.getAttribute('parentId')
 
+    currentparent===parent?setcards(cards.pop()):setCurrentParent(parent)
+      
+    
     const found=cards.some(e=>e.parent===parent)
     if(!found){
       setcards(cards.concat({parent,child}))
@@ -173,12 +177,8 @@ export default function Navbar(props) {
    
   }
 
-  const removeid=()=>{
-    setcards(cards.pop())
-  }
-  console.log(cards)
 
-  console.log(result)
+
 
   const card = (key) => {
     return (
@@ -187,7 +187,7 @@ export default function Navbar(props) {
 
         result[key]?.map((element) => {
           return (
-            <a className="dropdown-item" onMouseEnter={fetchid}  href="#" id='dropdown_item' parentId={element.parentId} childId={element.childId} key={element.childId} > {element.name}<span style={{ float: 'right',listStyle:'none'}}><i><img src='icon.png'></img></i></span></a>
+            <a className="nav-link" onMouseEnter={fetchid}  href={element.childId} id='dropdown_item' parentId={element.parentId} childId={element.childId} key={element.childId} > {element.name}<span style={{ float: 'right',listStyle:'none'}}><i></i></span></a>
           )
 
         }))
@@ -198,13 +198,19 @@ export default function Navbar(props) {
 
 
 function Card(props) {
-  return (
+  if (result[props.card]){
+    return (
+      <div style={{paddingLeft:'1%'}}>
+        <div class="card">
+        {card(props.card)}
+        </div>
+      </div>
+    
+  
+    )
 
-    <div class="card" >
-    {card(props.card)}
-    </div>
+  }
 
-  )
 }
 
 
@@ -247,7 +253,7 @@ function Card(props) {
           <i className="bi bi-list px-1" role="button"  onClick={handleMouseEnter}  style={{ ...baseTextColor, fontSize: '20px' }}></i>
 
 
-          <a className="navbar-brand text-white" href="#"><img src='Logo-v3 1.png'></img></a>
+          <Link className="navbar-brand text-white" to="/home"><img src='Logo-v3 1.png'></img></Link>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -292,7 +298,7 @@ function Card(props) {
       </nav>
       <div className='submenu' onClick={handleMouseLeave} style={submenu}>
         
-            <div class="card">
+            <div class="card" >
             <h3>Categories</h3>
             {card(1)}
             </div>

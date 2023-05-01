@@ -33,6 +33,7 @@ function App() {
      <Navbar data={data}/>
      <Routes>
         <Route path="/Notfound" element={<Page404/>}/>
+        <Route path="/home"/>
      </Routes>
      
     
