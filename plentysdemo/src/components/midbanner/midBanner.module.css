@@ -1,0 +1,24 @@
+.indicator{
+    border-radius: 100px !important;
+    height: 4px !important;
+    width: 5px !important;
+    transition: all 0.2s ease-in-out  ;
+}
+
+.indicator:active{
+    width: 1.5rem !important;
+
+}
+
+.indicator:focus{
+    width: 1.5rem !important;
+
+}
+.indicator:hover{
+
+    width: 1.5rem !important;
+}
+
+.crousal{ 
+    margin-top: -1.8rem !important;
+}

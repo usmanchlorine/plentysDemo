@@ -4,6 +4,7 @@ import { Route,Routes } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Navbar';
 import Page404 from './components/Page404';
+import MainSection from './pages/MainSection';
 
 function App() {
   const [data, setData] = useState([])
@@ -33,7 +34,7 @@ function App() {
      <Navbar data={data}/>
      <Routes>
         <Route path="/Notfound" element={<Page404/>}/>
-        <Route path="/home"/>
+        <Route path="/" element={<MainSection data={data}/>}/>
      </Routes>
      
     

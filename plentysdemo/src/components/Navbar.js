@@ -122,9 +122,10 @@ export default function Navbar(props) {
     position: 'absolute',
     top: '80px',
     width: '100%',
-    height: '100vh',
+    height: '100%',
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    display:isHover?'flex':'none'
+    display:isHover?'flex':'none',
+    zIndex:2
   }
 
 

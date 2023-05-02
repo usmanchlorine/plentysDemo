@@ -1,0 +1,24 @@
+.maincontainer{
+    background-color: #0B223F;
+    width: 100%;
+    height:360px;
+    border-top: 1px solid white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+.shoppingbag1{
+   opacity: 0.1;
+    
+}
+
+.mainContFront{
+    gap: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+}
+
