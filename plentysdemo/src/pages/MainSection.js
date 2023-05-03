@@ -9,10 +9,11 @@ const array_methods = require('lodash/array');
 
 export default function MainSection(prop) {
   const data=prop.data
-  console.log(data)
-  const group_data= _.groupBy(data,'parentId')
  
+  const group_data= _.groupBy(data,'parentId')
+  console.log(group_data)
   const topCategories_id1=group_data[1]
+  
   return (
   <>
   <Frontbanner/>
@@ -21,7 +22,7 @@ export default function MainSection(prop) {
   
   <TopCategories catedata={topCategories_id1}/>
   <br></br>
-  <Productcards/>
+  <Productcards heading={topCategories_id1} whole_data={group_data}/>
 
   </>
   )

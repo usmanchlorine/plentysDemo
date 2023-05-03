@@ -1,0 +1,12 @@
+.footerback{
+    background-color: #0B223F;
+    height: 520px;
+}
+
+.sociallinks{
+    border-radius: 5px;
+    color: black;
+    padding: 5px;
+    align-self: center;
+    margin-top: 0.5rem;
+}

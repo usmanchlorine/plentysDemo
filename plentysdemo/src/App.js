@@ -5,6 +5,7 @@ import './App.css';
 import Navbar from './components/Navbar';
 import Page404 from './components/Page404';
 import MainSection from './pages/MainSection';
+import Footer from './components/footer/Footer';
 
 function App() {
   const [data, setData] = useState([])
@@ -36,6 +37,7 @@ function App() {
         <Route path="/Notfound" element={<Page404/>}/>
         <Route path="/" element={<MainSection data={data}/>}/>
      </Routes>
+     <Footer/>
      
     
     </>

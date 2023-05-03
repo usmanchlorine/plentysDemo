@@ -16,10 +16,11 @@ function TopCategories_card(props) {
 
     
     LIST_OF_CLASSES?.map((item) => {
+      
       return(
        
         <div className= {" mx-1 px-3 "+ `bg-${random_color()}`} style={{width:"max-content",height:'200px',display:'inline-block',whiteSpace:'nowrap',borderRadius:'10px'}}  key={item.childId}>
-      
+          {/* <img src={item.imageUrl} style={{height:'200px',width:'200px'}}></img> */}
           <p className={" py-3 nav-link " + styles.categories_list}>{item.name}</p>
         </div>
 
