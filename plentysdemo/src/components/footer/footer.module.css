@@ -10,3 +10,54 @@
     align-self: center;
     margin-top: 0.5rem;
 }
+
+
+.footer_links{
+    color: #74A4E2 !important;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+
+}
+
+.footerinput{
+    width: 90% !important;
+    background-color: white;
+    border-radius: 10px;
+    height: 64px;
+}
+
+.footerbutton{
+    padding-left:1.5rem;
+    padding-right:1.5rem;
+    padding-top:0.8rem;
+    padding-bottom:0.8rem;
+    
+}
+
+.footerinput{
+    color: #94A3B8;
+    width:100%;
+    border: none;
+    outline: none;
+    padding-left:1.0rem;
+
+}
+
+.footerinput::-webkit-input-placeholder { /* Edge */
+    color: red;
+  }
+  
+  .footerinput:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: rgb(3, 219, 35);
+  }
+  
+  .footerinput::placeholder {
+    color: #94A3B8;
+    font-size: 1.2rem;
+    padding: 0.2rem;
+  }
+
+.csscheckbox{
+        padding: 20px;
+        
+    }

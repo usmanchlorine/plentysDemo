@@ -3,7 +3,8 @@ import { useState, useEffect } from 'react'
 import './Navbar.css';
 import styles from '../CSSModules/Navbar.module.css'
 import { groupBy } from "core-js/actual/array/group-by";
-import { Link } from 'react-router-dom';
+import { Link, Routes,Route } from 'react-router-dom';
+
 export default function Navbar(props) {
   const navbar_header = {
     height: '80px',
@@ -78,6 +79,22 @@ export default function Navbar(props) {
 
   }
 
+  function Loginbutton(){
+    return (
+      <>
+      <button type="button" className="btn btn-primary">Success</button>
+      <button type="button" className="btn btn-outline-primary"><span className='text-white'>Signup</span></button>
+      </>
+    )
+  }
+
+  function Accounts(){
+    return(
+      <>
+      <span><a><img src='user-circle.png'></img><p className='px-1 d-inline text-light py-3'>Accounts</p></a></span>
+      </>
+    )
+  }
 
 
   const [SearchContainer, SetSearchContainer] = useState({
@@ -286,8 +303,11 @@ function Card(props) {
                 <i className="bi bi-cart text-white"></i>
               </span>
               <span style={right_button}>
-                <button type="button" className="btn btn-primary">Success</button>
-                <button type="button" className="btn btn-outline-primary"><span className='text-white'>Signup</span></button>
+                <Routes>
+                  <Route path="/" element={<Loginbutton/>} />
+                  <Route path="/notfound" element={<Accounts/>} />
+                </Routes>
+                
 
               </span>
 
