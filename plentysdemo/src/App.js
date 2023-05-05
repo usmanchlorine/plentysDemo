@@ -6,6 +6,7 @@ import Navbar from './components/Navbar';
 import Page404 from './components/Page404';
 import MainSection from './pages/MainSection';
 import Footer from './components/footer/Footer';
+import Addtocart from './pages/Addtocart';
 
 function App() {
   const [data, setData] = useState([])
@@ -24,7 +25,7 @@ function App() {
   
     setData(parsedata.data)
 
-   
+   //https://api.plentys.pk/api/v1/public/allCategories?cityId=1'
       
   }
 
@@ -36,6 +37,7 @@ function App() {
      <Routes>
         <Route path="/Notfound" element={<Page404/>}/>
         <Route path="/" element={<MainSection data={data}/>}/>
+        <Route path="/addtocart" element={<Addtocart/>}/>
      </Routes>
      <Footer/>
      

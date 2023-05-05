@@ -4,7 +4,7 @@
     border-top-left-radius: 20px!important;
     border: 1px solid #E2E8F0;
     height: 275px !important;
-    object-fit:scale-down;
+    object-fit:contain;
 
 }
 

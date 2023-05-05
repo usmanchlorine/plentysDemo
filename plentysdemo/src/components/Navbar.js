@@ -4,7 +4,7 @@ import './Navbar.css';
 import styles from '../CSSModules/Navbar.module.css'
 import { groupBy } from "core-js/actual/array/group-by";
 import { Link, Routes,Route } from 'react-router-dom';
-
+import { useSelector } from 'react-redux';
 export default function Navbar(props) {
   const navbar_header = {
     height: '80px',
@@ -147,12 +147,11 @@ export default function Navbar(props) {
 
 
 
-  /////////////// data ////////////
+/////////////// data ////////////
 
   const categories = props.data
-
-
-
+  const productcount=useSelector(state=>state.productIncrementReducer.prodcount)
+ 
   const groupBy = (array, key) => {
     // Return the end result
     return array.reduce((result, currentValue) => {
@@ -167,7 +166,9 @@ export default function Navbar(props) {
 
   const result = groupBy(categories, 'parentId');
   const [currentparent,setCurrentParent] =useState(null)
-
+  
+    const persistedState=localStorage.getItem('parseData');
+    console.log(JSON.stringify(persistedState));
 
   // hovering data
 
@@ -271,7 +272,7 @@ function Card(props) {
           <i className="bi bi-list px-1" role="button"  onClick={handleMouseEnter}  style={{ ...baseTextColor, fontSize: '20px' }}></i>
 
 
-          <Link className="navbar-brand text-white" to="/home"><img src='Logo-v3 1.png'></img></Link>
+          <Link className="navbar-brand text-white" to="/"><img src='Logo-v3 1.png'></img></Link>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -296,11 +297,16 @@ function Card(props) {
             <div className='d-flex' style={navbar_rightarea}>
               <span className='' style={right_icons}>
                 <span onClick={toggleSearchHandler}>
+                  
                   <i className='bi-search text-white' ></i>
                 </span>
 
                 <i className="bi bi-whatsapp text-success"></i>
-                <i className="bi bi-cart text-white"></i>
+                <span style={{position:'relative'}}>
+                  {productcount>=1?<span class="badge badge-pill badge-primary" style={{position:'absolute',top:-5,left:'10px'}}>{productcount}</span>:""}
+                  <Link to="/addtocart"><i className="bi bi-cart text-white"></i></Link>
+                </span>
+                
               </span>
               <span style={right_button}>
                 <Routes>

@@ -1,6 +1,7 @@
 import React from 'react'
-
+import ProdIncrement from '../../state/Actions/ProdIncrementAction';
 import styles from './productcards.module.css'
+import { useDispatch } from 'react-redux';
 
 const colorfill = (event) => {
     /// ternary operatos
@@ -11,8 +12,9 @@ const colorfill = (event) => {
 
 
 
-function card(item) {
-    const carddata = item;
+function Card(props) {
+    const carddata = props.item;
+    const dispatch=useDispatch()
     return (
         <>
             <div className="col-md-12 col-lg-4 mb-3" >
@@ -43,7 +45,7 @@ function card(item) {
                         </div>
 
                         <div className="d-flex justify-content-between mb-1">
-                            <button className='btn btn-warning ' style={{ padding: '15px 30px', fontSize: '14px', fontWeight: 'bold' }}>Add to card</button>
+                            <button className='btn btn-warning ' style={{ padding: '15px 30px', fontSize: '14px', fontWeight: 'bold' }} onClick={()=>dispatch(ProdIncrement(carddata))}>Add to card</button>
                             <div>
                                 <p className="small text-danger" style={{ float: 'right', marginBottom: '0.2rem' }}><s>$1099</s></p>
                                 <h5 className="text-dark" style={{ alignSelf: 'center' }}>$999</h5>
@@ -63,7 +65,7 @@ function card(item) {
 
 
 export default function Productcards(props) {
-
+   
     return (
         <>
             {
@@ -77,7 +79,7 @@ export default function Productcards(props) {
 
                                     props.whole_data[lists.childId]?.map((item) => {
                                         return (
-                                            <>{card(item)}</>
+                                            <>{<Card item={item}/>}</>
 
                                         )
                                     })
