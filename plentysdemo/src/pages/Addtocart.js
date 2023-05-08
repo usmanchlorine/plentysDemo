@@ -1,7 +1,9 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import ProdDecrement from '../state/Actions/ProdDecrementAction'
 
 export default function Addtocart() {
+  const dispatch = useDispatch()
     const cartdata=useSelector(state=>state.productIncrementReducer.prodIds)
   return (
     <div className='container-fluid px-4'>
@@ -23,7 +25,7 @@ export default function Addtocart() {
                 <th scope="row">{index+1}</th>
                 <td className='d-flex '><img src={item.mobileImageUrl} style={{scale:'0.5',marginTop:'-2rem'}}></img></td>
                 <td>{item.name}</td>
-                <td><button className='btn btn-danger'>Delete</button></td>
+                <td><button className='btn btn-danger'onClick={()=>dispatch(ProdDecrement(item.childId))}>Delete</button></td>
             </tr>
             )
 

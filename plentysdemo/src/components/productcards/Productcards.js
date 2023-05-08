@@ -1,7 +1,7 @@
 import React from 'react'
 import ProdIncrement from '../../state/Actions/ProdIncrementAction';
 import styles from './productcards.module.css'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const colorfill = (event) => {
     /// ternary operatos
@@ -15,6 +15,8 @@ const colorfill = (event) => {
 function Card(props) {
     const carddata = props.item;
     const dispatch=useDispatch()
+    const cartitems=useSelector(state=>state.productIncrementReducer.prodIds)
+
     return (
         <>
             <div className="col-md-12 col-lg-4 mb-3" >
@@ -45,7 +47,11 @@ function Card(props) {
                         </div>
 
                         <div className="d-flex justify-content-between mb-1">
-                            <button className='btn btn-warning ' style={{ padding: '15px 30px', fontSize: '14px', fontWeight: 'bold' }} onClick={()=>dispatch(ProdIncrement(carddata))}>Add to card</button>
+                        {cartitems.some((cartitem)=>cartitem.childId===carddata.childId)
+                        ?<button className='btn btn-success ' style={{ padding: '15px 30px', fontSize: '14px', fontWeight: 'bold' }} onClick={()=>dispatch(ProdIncrement(carddata))}>Go to cart</button>
+                        :<button className='btn btn-warning'style={{ padding: '15px 30px', fontSize: '14px', fontWeight: 'bold' }} onClick={()=>dispatch(ProdIncrement(carddata))}>Add to cart</button>
+                        }
+                            
                             <div>
                                 <p className="small text-danger" style={{ float: 'right', marginBottom: '0.2rem' }}><s>$1099</s></p>
                                 <h5 className="text-dark" style={{ alignSelf: 'center' }}>$999</h5>

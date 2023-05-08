@@ -1,8 +1,10 @@
 import { combineReducers } from "@reduxjs/toolkit";
 import productIncrementReducer from "./productIncrementReducer";
+import getbannerReducer from "./bannerReducer";
 
 let allReducers=combineReducers({
-    productIncrementReducer: productIncrementReducer
+    productIncrementReducer: productIncrementReducer,
+    bannerReducer:getbannerReducer
 }
   
     

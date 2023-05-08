@@ -7,13 +7,16 @@ import Page404 from './components/Page404';
 import MainSection from './pages/MainSection';
 import Footer from './components/footer/Footer';
 import Addtocart from './pages/Addtocart';
+import fetchBanners from './state/Actions/bannerApi';
 
 function App() {
   const [data, setData] = useState([])
+  
 
   useEffect(() => {
     fetchdata()
-    
+    localStorage.getItem('bannerData')?setBannerData(JSON.parse(localStorage.getItem('bannerData'))):fetchBanners()
+    fetchBanners()
   }, [])
 
 
@@ -31,12 +34,15 @@ function App() {
 
 
 
+  
+
+
   return (
     <>
      <Navbar data={data}/>
      <Routes>
         <Route path="/Notfound" element={<Page404/>}/>
-        <Route path="/" element={<MainSection data={data}/>}/>
+        <Route path="/" element={<MainSection banners={bannerData} data={data}/>}/>
         <Route path="/addtocart" element={<Addtocart/>}/>
      </Routes>
      <Footer/>

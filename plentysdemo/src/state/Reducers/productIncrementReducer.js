@@ -15,6 +15,15 @@ const productIncrement=(state=defualt_state,action)=>{
                 prodIds:state.prodIds.concat(action.payload)
 
             }
+        case 'DECREMENT':
+
+            return {
+               ...state,
+                prodcount:state.prodcount-1,
+                prodIds:state.prodIds.filter((item)=>{
+                    return item.childId!==action.payload
+                })
+            }
         
         default:    
             return state
