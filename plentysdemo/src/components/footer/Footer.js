@@ -10,7 +10,7 @@ export default function Footer() {
                             <img src='Logo-V3 1.png'></img>
                         </div>
 
-                        <div className="d-flex justify-content-end  gap-3 mt-2 mr-3 pt-5">
+                        <div className="d-flex justify-content-end  gap-3 mt-2  pt-5" style={{marginRight:'5.2rem'}}>
                             <p className='' style={{fontSize:'20px',marginBlock:'inherit'}}>Social Links</p>
                             <span className={"px-3 bg-white " +styles.sociallinks}><i className='bi bi-twitter'></i></span>
                             <span className={"px-3 bg-white "+styles.sociallinks}><i className='bi bi-facebook'></i></span>
@@ -46,10 +46,10 @@ export default function Footer() {
                         <div className="p-2 flex-fill bd-highlight mb-3 mb-md-0">
                             <img src='plentysQrCode.png'></img>
                         </div>
-                        <div className="p-2 flex-fill bd-highlight mb-3 mb-md-0">
+                        <div className="p-2 flex-fill justify-content-between bd-highlight mb-3 mb-md-0">
                             <div className='d-flex gap-4'>
                                 <span><img src='Play store.png'></img></span>
-                                <span><img src='App store.png'></img></span>
+                                <span className=''><img src='App store.png'></img></span>
                             </div>
                             <br></br>
                             <h5>Newsletter</h5>

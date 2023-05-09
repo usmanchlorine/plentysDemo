@@ -9,9 +9,7 @@
 
 }
 
-#submenu{
 
-}
 
 
 h1 {
@@ -27,3 +25,10 @@ color: #293640;
 border-radius: 15px;
 }
     
+.cities{
+    transition: all 0.1s ease;
+    border-radius: 5px;
+}
+.cities:hover{
+    background-color: #F9C21A;
+}

@@ -2,7 +2,7 @@ import React from 'react'
 import ProdIncrement from '../../state/Actions/ProdIncrementAction';
 import styles from './productcards.module.css'
 import { useDispatch, useSelector } from 'react-redux';
-
+import { Link } from 'react-router-dom';
 const colorfill = (event) => {
     /// ternary operatos
     event.target.style.color === "red" ? event.target.style.color = "gray" : event.target.style.color = "red";
@@ -20,7 +20,7 @@ function Card(props) {
     return (
         <>
             <div className="col-md-12 col-lg-4 mb-3" >
-                <div className="card bg-white border-0 mt-5 " style={{ width: '300px', height: '500px', position: 'relative' }}>
+                <div className="card bg-white border-0 " style={{ width: '300px', height: '500px', position: 'relative' }}>
                     <span class={"badge badge-danger " + styles.badge_discount}>Danger</span>
                     <span class={"badge badge-light " + styles.badge_discount2}><i onClick={colorfill} className="bi bi-heart-fill"></i></span>
                     <img src={carddata.mobileImageUrl}
@@ -48,7 +48,7 @@ function Card(props) {
 
                         <div className="d-flex justify-content-between mb-1">
                         {cartitems.some((cartitem)=>cartitem.childId===carddata.childId)
-                        ?<button className='btn btn-success ' style={{ padding: '15px 30px', fontSize: '14px', fontWeight: 'bold' }} onClick={()=>dispatch(ProdIncrement(carddata))}>Go to cart</button>
+                        ?<button className='btn btn-success ' style={{ padding: '15px 30px', fontSize: '14px', fontWeight: 'bold' }}><Link to="/addtocart"><i className="bi bi-cart text-white">Go to cart</i></Link></button>
                         :<button className='btn btn-warning'style={{ padding: '15px 30px', fontSize: '14px', fontWeight: 'bold' }} onClick={()=>dispatch(ProdIncrement(carddata))}>Add to cart</button>
                         }
                             
@@ -71,31 +71,39 @@ function Card(props) {
 
 
 export default function Productcards(props) {
-   
+    console.log(props.heading);
+   const decommisned=['Flash Deals','Celebrations','Wholesale Offer']
     return (
         <>
             {
+               
                 props.heading?.map((lists) => {
-                    return (
-                        <div className='container' style={{height:"max-content"}}>
-                            <h3>{lists.name}</h3>
-                            <br></br>
-                            <div className='d-flex flex-wrap overflow-y-hidden' style={{minHeight:'600px'}}  >
-                                {
-
-                                    props.whole_data[lists.childId]?.map((item) => {
-                                        return (
-                                            <>{<Card item={item}/>}</>
-
-                                        )
-                                    })
-                                }
-
-
+                    if (!decommisned.includes(lists.name)){
+                        return (
+                            <div className='container' style={{height:"max-content"}}>
+                                <h3>{lists.name}</h3>
+                                <br></br>
+                                <div className='d-flex flex-wrap overflow-y-hidden' style={{minHeight:'0px'}}  >
+                                    <div className={'flex-grow-2 d-flex justify-content-center align-items-center '+styles.productbanners}><img src='https://propakistani.pk/wp-content/uploads/2022/08/plenty.jpg' style={{objectFit:'fill'}}></img></div>
+                                    {
+    
+                                        props.whole_data[lists.childId]?.map((item) => {
+                                            return (
+    
+                                                <>{<Card item={item}/>}</>
+    
+                                            )
+                                        })
+                                    }
+    
+    
+                                </div>
+    
                             </div>
-
-                        </div>
-                    )
+                        )
+                        
+                    }
+                    
 
 
                 })

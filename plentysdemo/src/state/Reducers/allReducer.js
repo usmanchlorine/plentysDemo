@@ -4,7 +4,7 @@ import getbannerReducer from "./bannerReducer";
 
 let allReducers=combineReducers({
     productIncrementReducer: productIncrementReducer,
-    bannerReducer:getbannerReducer
+    getbannerReducer:getbannerReducer
 }
   
     

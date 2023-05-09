@@ -42,7 +42,7 @@ export default function Navbar(props) {
 
 
   const searchInput = {
-    width: 'max-content',
+    width: '90%',
     boxShadow: '0 !important',
     outline: "none"
   }
@@ -287,9 +287,9 @@ function Card(props) {
                   Karachi
                 </a>
                 <ul className="dropdown-menu" style={{ ...baseTextColor }}>
-                  <li><a className="dropdown-item" href="#">Lahore</a></li>
-                  <li><a className="dropdown-item" href="#">Islamabad</a></li>
-                  <li><a className="dropdown-item" href="#">Multan</a></li>
+                  <li><a className="dropdown-item cities" href="#">Lahore</a></li>
+                  <li><a className="dropdown-item cities" href="#">Islamabad</a></li>
+                  <li><a className="dropdown-item cities" href="#">Multan</a></li>
                 </ul>
               </li>
 

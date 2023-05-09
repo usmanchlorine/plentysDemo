@@ -5,24 +5,25 @@ import { Provider } from 'react-redux';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
-import {BrowserRouter,Routes,Route} from 'react-router-dom';
-import {legacy_createStore as createStore} from 'redux'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { legacy_createStore as createStore } from 'redux'
 import allReducers from './state/Reducers/allReducer';
-import { persistStore,persistReducer } from 'redux-persist';
-import storage from'redux-persist/lib/storage';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 import { PersistGate } from 'redux-persist/integration/react';
-
-
+import thunk from 'redux-thunk';
+import { applyMiddleware } from '@reduxjs/toolkit';
+import { compose } from '@reduxjs/toolkit';
 
 const Config = {
   key: 'root',
   storage,
-  blacklist: [''] ,// pass the reducers thats are zero while refreshed
-  whitelist:['productIncrementReducer'] // pass the reducers that states are not become zero while refreshed  
+  blacklist: [],// pass the reducers thats are zero while refreshed
+  whitelist: ['productIncrementReducer', 'getbannerReducer'] // pass the reducers that states are not become zero while refreshed  
 };
 
 const persistedReducer = persistReducer(Config, allReducers);
-
+const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const container = document.getElementById('root');
 const root = createRoot(container);
@@ -32,9 +33,8 @@ const root = createRoot(container);
 
 const store = createStore(
   persistedReducer,
-
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  );
+  composeEnhancer(applyMiddleware(thunk))
+);
 
 
 const persistor = persistStore(store);
@@ -51,13 +51,13 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate persistor={persistor}>
-    <BrowserRouter>
-    <Routes>
-        <Route path='*' element={<App />}></Route>
-    </Routes>
-    
-    </BrowserRouter> 
-    </PersistGate>
+        <BrowserRouter>
+          <Routes>
+            <Route path='*' element={<App />}></Route>
+          </Routes>
+
+        </BrowserRouter>
+      </PersistGate>
     </Provider>
   </React.StrictMode>
 );
