@@ -72,7 +72,10 @@ function Card(props) {
 
 export default function Productcards(props) {
     console.log(props.heading);
-   const decommisned=['Flash Deals','Celebrations','Wholesale Offer']
+   const decommisned=[]
+    const cardsDATA=useSelector(state=>state.getProductReducer)
+    console.log(cardsDATA)
+   
     return (
         <>
             {
@@ -84,7 +87,7 @@ export default function Productcards(props) {
                                 <h3>{lists.name}</h3>
                                 <br></br>
                                 <div className='d-flex flex-wrap overflow-y-hidden' style={{minHeight:'0px'}}  >
-                                    <div className={'flex-grow-2 d-flex justify-content-center align-items-center '+styles.productbanners}><img src='https://propakistani.pk/wp-content/uploads/2022/08/plenty.jpg' style={{objectFit:'fill'}}></img></div>
+                                    <div className={''+styles.productbanners}><img src='https://propakistani.pk/wp-content/uploads/2022/08/plenty.jpg' width={'100%'}/></div>
                                     {
     
                                         props.whole_data[lists.childId]?.map((item) => {

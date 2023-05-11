@@ -10,6 +10,7 @@ import Addtocart from './pages/Addtocart';
 import fetchBanners from './state/Actions/bannerApi';
 import { useDispatch } from 'react-redux';
 
+
 function App() {
   const [data, setData] = useState([])
   const dispatch = useDispatch()
@@ -18,7 +19,9 @@ function App() {
     fetchdata()
     // localStorage.getItem('bannerData')?setBannerData(JSON.parse(localStorage.getItem('bannerData'))):fetchBanners()
     dispatch(fetchBanners())
-  }, [])
+    
+
+  }, [])  
 
 
 
@@ -32,6 +35,9 @@ function App() {
     //https://api.plentys.pk/api/v1/public/allCategories?cityId=1'
 
   }
+
+
+  
 
 
 
