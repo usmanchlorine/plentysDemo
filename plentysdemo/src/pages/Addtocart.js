@@ -23,9 +23,9 @@ export default function Addtocart() {
             return(
             <tr key={index} className=''>
                 <th scope="row">{index+1}</th>
-                <td className='d-flex ' style={{width:'100px',height:'100px'}}><img src={item.mobileImageUrl} style={{scale:'0.5',marginTop:'-2rem'}}></img></td>
-                <td>{item.name}</td>
-                <td><button className='btn btn-danger'onClick={()=>dispatch(ProdDecrement(item.childId))}>Delete</button></td>
+                <td className='d-flex ' style={{width:'100px',height:'100px'}}><img src={item.imageUrl} style={{scale:'0.5',marginTop:'-2rem'}}></img></td>
+                <td>{item.title}</td>
+                <td><button className='btn btn-danger'onClick={()=>dispatch(ProdDecrement(item.productId))}>Delete</button></td>
             </tr>
             )
 
