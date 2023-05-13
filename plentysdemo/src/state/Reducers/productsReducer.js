@@ -1,9 +1,9 @@
 import { GET_BUEATY, GET_PlentysMart, GET_WHOLESALE } from "../Actions/ProductsApi";
 
 const initialState = {
-    wholeSale:[],
+    wholeSale: [],
     PlentysMart: [],
-    BeautyGrooming:[],
+    BeautyGrooming: [],
 }
 
 const productsReducer = (state = initialState, action) => {
@@ -13,14 +13,14 @@ const productsReducer = (state = initialState, action) => {
                 ...state,
                 PlentysMart: action.payload
             }
-        
+
         case GET_WHOLESALE:
             return {
                 ...state,
 
                 wholeSale: action.payload
             }
-          
+
         case GET_BUEATY:
             return {
                 ...state,

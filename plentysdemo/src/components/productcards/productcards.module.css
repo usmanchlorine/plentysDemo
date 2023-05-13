@@ -1,47 +1,38 @@
-.imgcard{
-    border-radius: 20px !important;
-    border-top-right-radius: 20px !important;
-    border-top-left-radius: 20px!important;
-    border: 1px solid #E2E8F0;
-    height: 275px !important;
-    object-fit:contain;
-
+.imgcard {
+  border-radius: 20px !important;
+  border-top-right-radius: 20px !important;
+  border-top-left-radius: 20px !important;
+  border: 1px solid #e2e8f0;
+  height: 275px !important;
+  object-fit: contain;
 }
 
-
-.badge_discount{
-    position: absolute;
-    top: 10%;
-    left: 7%;
-    overflow-x: hidden;
-
+.badge_discount {
+  position: absolute;
+  top: 10%;
+  left: 7%;
+  overflow-x: hidden;
 }
 
-
-.badge_discount2{   
-    color: rgb(149, 149, 149);
-    position: absolute;
-    top: 10%;
-    right: 10%;
-    overflow-x: hidden;
-    transition: 0.3s;
-
+.badge_discount2 {
+  color: rgb(149, 149, 149);
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  overflow-x: hidden;
+  transition: 0.3s;
 }
 
 .badge_discount2 i:hover {
-    color: red;
-    
-    
-    
-
+  color: red;
 }
 
-.productbanners{
-
-    height: 431px;
-    width: 65%;
-    border-radius: 20px;
-    background-color: #E2E8F0;
+.productbanners {
+  height: 431px;
+  width: 65%;
+  border-radius: 20px;
+  background-color: #e2e8f0;
 }
 
- 
+/* CSS */
+

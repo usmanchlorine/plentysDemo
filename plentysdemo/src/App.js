@@ -9,6 +9,7 @@ import Footer from './components/footer/Footer';
 import Addtocart from './pages/Addtocart';
 import fetchBanners from './state/Actions/bannerApi';
 import { useDispatch } from 'react-redux';
+import AllProductcards from './pages/AllProductcards';
 
 
 function App() {
@@ -19,9 +20,9 @@ function App() {
     fetchdata()
     // localStorage.getItem('bannerData')?setBannerData(JSON.parse(localStorage.getItem('bannerData'))):fetchBanners()
     dispatch(fetchBanners())
-    
 
-  }, [])  
+
+  }, [])
 
 
 
@@ -37,7 +38,7 @@ function App() {
   }
 
 
-  
+
 
 
 
@@ -51,6 +52,7 @@ function App() {
         <Route path="/Notfound" element={<Page404 />} />
         <Route path="/" element={<MainSection data={data} />} />
         <Route path="/addtocart" element={<Addtocart />} />
+        <Route path="/allCards" element={<AllProductcards />} />
       </Routes>
       <Footer />
 
