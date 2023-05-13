@@ -43,6 +43,7 @@ export default function Addtocart() {
             <th scope="col">#</th>
             <th scope="col">Product</th>
             <th scope="col">Name</th>
+            <th scope="col">Price</th>
             <th scope="col">Delete</th>
           </tr>
         </thead>
@@ -57,6 +58,7 @@ export default function Addtocart() {
                     <th scope="row">{index + 1}</th>
                     <td className='d-flex ' style={{ width: '100px', height: '100px' }}><img src={item.imageUrl} style={{ scale: '0.5', marginTop: '-2rem' }}></img></td>
                     <td>{item.title}</td>
+                    <td>Rs {item.minPrice}</td>
                     <td><button className='btn btn-danger' onClick={() => dispatch(ProdDecrement(item.productId))}>Delete</button></td>
                   </tr>
                 )
