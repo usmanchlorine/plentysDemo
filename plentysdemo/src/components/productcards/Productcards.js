@@ -12,10 +12,18 @@ const colorfill = (event) => {
 
 
 
+
+
 function Card(props) {
     const carddata = props.item;
     const dispatch=useDispatch()
     const cartitems=useSelector(state=>state.productIncrementReducer.prodIds)
+    var rating=parseInt(carddata.avgRating)
+    if (rating==NaN) {
+
+        rating=0
+    }
+
 
     return (
         <>
@@ -36,11 +44,22 @@ function Card(props) {
 
                         <div className="d-flex justify-content-start mb-1 ">
                             <div className="text-warning">
-                                <i className="bi bi-star"></i>
-                                <i className="bi bi-star"></i>
-                                <i className="bi bi-star"></i>
-                                <i className="bi bi-star"></i>
-                                <i className="bi bi-star"></i>
+                
+
+                                {
+                                    Array.from(Array(5),(e,i)=>{
+                                        if(i+1<rating){
+                                            return <i className='bi bi-star-fill'></i>
+                                        }
+                                        return <i className='bi bi-star'></i>
+                                        
+
+                                    })
+                                }
+                                    
+                                    
+                                
+                               
                             </div>
                             <span className='ml-1'>{(`(${carddata.numberOfReview})`)}</span>
 

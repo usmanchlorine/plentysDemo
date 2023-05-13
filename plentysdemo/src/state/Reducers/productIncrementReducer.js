@@ -21,7 +21,7 @@ const productIncrement=(state=defualt_state,action)=>{
                ...state,
                 prodcount:state.prodcount-1,
                 prodIds:state.prodIds.filter((item)=>{
-                    return item.childId!==action.payload
+                    return item.productId!==action.payload
                 })
             }
         
