@@ -28,7 +28,7 @@
 }
 
 .productbanners {
-  height: 431px;
+  height: max-content;
   width: 65%;
   border-radius: 20px;
   background-color: #e2e8f0;
@@ -36,3 +36,14 @@
 
 /* CSS */
 
+@media screen and (max-width: 767px) {
+  .heading {
+    margin-top: 3em;
+  }
+  .productbanners {
+    height: max-content;
+    width: 100%;
+    border-radius: 20px;
+    background-color: #e2e8f0;
+  }
+}

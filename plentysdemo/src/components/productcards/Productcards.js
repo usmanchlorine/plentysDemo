@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ProdIncrement from '../../state/Actions/ProdIncrementAction';
 import styles from './productcards.module.css'
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,6 +7,13 @@ import { allCards } from '../../state/Actions/showAllCardsAction';
 const colorfill = (event) => {
     /// ternary operatos
     event.target.style.color === "red" ? event.target.style.color = "gray" : event.target.style.color = "red";
+
+
+}
+
+
+const Showcased = (props) => {
+
 
 
 }
@@ -28,8 +35,8 @@ function Card(props) {
 
     return (
         <>
-            <div className={`col-md-12 col-lg-${props.col} mb-3`} >
-                <div className="card bg-white border-0 " style={{ width: '300px', height: '500px', position: 'relative' }}>
+            <div className={` col-sm-12 col-md-6 col-lg-${props.col} mb-3`} >
+                <div className="card bg-white border-0 " style={{ width: '100%', height: '500px', position: 'relative' }}>
                     <span class={"badge badge-danger " + styles.badge_discount}>{carddata.productCondition}</span>
                     <span class={"badge badge-light " + styles.badge_discount2}><i onClick={colorfill} className="bi bi-heart-fill"></i></span>
                     <img src={carddata.imageUrl}
@@ -96,6 +103,8 @@ export default function Productcards(props) {
     const cardsDATA = useSelector(state => state.getProductReducer)
     console.log("this is ", cardsDATA)
     const dispatch = useDispatch()
+    let showcase = 1;
+
 
 
 
@@ -108,7 +117,7 @@ export default function Productcards(props) {
 
 
                 <div className='container' style={{ height: "max-content" }}>
-                    <h3>{cardsDATA.wholeSale ? `Plentys Mart` : null}</h3>
+                    <h3 className={'' + styles.heading}>{cardsDATA.wholeSale ? `Plentys Mart` : null}</h3>
                     <br></br>
                     <div className='d-flex flex-wrap overflow-y-hidden' style={{ minHeight: '0px' }}  >
                         <div className={'' + styles.productbanners}><img src='https://propakistani.pk/wp-content/uploads/2022/08/plenty.jpg' width={'100%'} /></div>
@@ -133,7 +142,7 @@ export default function Productcards(props) {
 
 
 
-                    <h3>{cardsDATA.wholeSale ? `Whole Sale` : null}</h3>
+                    <h3 className={'' + styles.heading}>{cardsDATA.wholeSale ? `Whole Sale` : null}</h3>
                     <br></br>
                     <div className='d-flex flex-wrap overflow-y-hidden' style={{ minHeight: '0px' }}  >
                         <div className={'' + styles.productbanners}><img src='https://propakistani.pk/wp-content/uploads/2022/08/plenty.jpg' alt='Logo-V3 1.png' width={'100%'} /></div>
@@ -162,13 +171,20 @@ export default function Productcards(props) {
 
 
 
-                    <h3>{cardsDATA.BeautyGrooming ? `Beauty And Grooming` : null}</h3>
+                    <h3 className={'' + styles.heading}>{cardsDATA.BeautyGrooming ? `Beauty And Grooming` : null}</h3>
                     <br></br>
                     <div className='d-flex flex-wrap overflow-y-hidden' style={{ minHeight: '0px' }}  >
-                        <div className={'' + styles.productbanners}><img src='Rectangle 821.png' width={'100%'} height={'431px'} /></div>
+
+
                         {
+
                             cardsDATA.BeautyGrooming?.map((item, index) => {
+
                                 if (index < 6) {
+                                    if (index == 0) {
+
+                                        return <div className={'' + styles.productbanners}><img src='Rectangle 821.png' width={'100%'} /></div>
+                                    }
                                     return (
 
                                         <>{<Card item={item} col={4} />}</>
@@ -178,6 +194,8 @@ export default function Productcards(props) {
                                 return;
 
                             })
+
+
                         }
                         <div className='d-flex align-items-center justify-content-center' style={{ flexShrink: 1, flexGrow: 1 }}>
 

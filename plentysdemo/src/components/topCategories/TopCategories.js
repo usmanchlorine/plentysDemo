@@ -23,7 +23,7 @@ function TopCategories_card(props) {
               {/* <img src={item.imageUrl} style={{height:'200px',width:'200px'}}></img> */}
               <p className={" py-2 nav-link " + styles.categories_list}>{item.name}</p>
               <div className='d-flex justify-content-center'>
-                <img src={item.imageUrl} width={'50%'} ></img>
+                <img src={item.imageUrl} width={'106.083px'} height={'106.083px'} ></img>
               </div>
             </div>
 
