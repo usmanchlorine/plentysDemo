@@ -10,6 +10,8 @@ import Addtocart from './pages/Addtocart';
 import fetchBanners from './state/Actions/bannerApi';
 import { useDispatch } from 'react-redux';
 import AllProductcards from './pages/AllProductcards';
+import Signup from './pages/SignupPage/Signup';
+import ProductDetail from './pages/ProductDetail/ProductDetail';
 
 
 function App() {
@@ -53,6 +55,8 @@ function App() {
         <Route path="/" element={<MainSection data={data} />} />
         <Route path="/addtocart" element={<Addtocart />} />
         <Route path="/allCards" element={<AllProductcards />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/productdetail" element={<ProductDetail />} />
       </Routes>
       <Footer />
 

@@ -1,0 +1,39 @@
+.divider:after,
+.divider:before {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #eee;
+}
+.h-custom {
+  height: calc(100% - 73px);
+}
+
+.btn-accounts {
+  width: 90%;
+  padding: 12px 0px !important;
+  color: white;
+  font-size: 1.5rem;
+  border-radius: 30px;
+  background-color: #092140;
+}
+.btn-accounts:first-child:hover {
+  background-color: #092140;
+  color: white;
+}
+
+.mainsection {
+  height: max-content;
+  padding: 100px 20px !important;
+}
+@media (min-width: 450px) {
+  .h-custom {
+    height: 100%;
+  }
+
+  .mainsection {
+    height: max-content;
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+}

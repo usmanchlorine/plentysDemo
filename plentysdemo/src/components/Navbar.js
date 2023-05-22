@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import './Navbar.css';
 import styles from '../CSSModules/Navbar.module.css'
 import { groupBy } from "core-js/actual/array/group-by";
-import { Link, Routes,Route } from 'react-router-dom';
+import { Link, Routes, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 export default function Navbar(props) {
   const navbar_header = {
@@ -27,7 +27,7 @@ export default function Navbar(props) {
     gap: '30.2px'
   }
 
-  const [cards,setcards]=useState([])
+  const [cards, setcards] = useState([])
 
   const baseTextColor = {
     color: 'white',
@@ -65,7 +65,7 @@ export default function Navbar(props) {
     setcards([]);
     setIsHover(false);
 
-  
+
   };
 
 
@@ -79,19 +79,19 @@ export default function Navbar(props) {
 
   }
 
-  function Loginbutton(){
+  function Loginbutton() {
     return (
       <>
-      <button type="button" className="btn btn-primary">Success</button>
-      <button type="button" className="btn btn-outline-primary"><span className='text-white'>Signup</span></button>
+        <button type="button" className="btn btn-primary">Success</button>
+        <Link to={'/signup'}><button type="button" className="btn btn-outline-primary"><span className='text-white'>Signup</span></button></Link>
       </>
     )
   }
 
-  function Accounts(){
-    return(
+  function Accounts() {
+    return (
       <>
-      <span><a><img src='user-circle.png'></img><p className='px-1 d-inline text-light py-3'>Accounts</p></a></span>
+        <span><a><img src='user-circle.png'></img><p className='px-1 d-inline text-light py-3'>Accounts</p></a></span>
       </>
     )
   }
@@ -135,23 +135,23 @@ export default function Navbar(props) {
 
   }
 
-  const submenu={
+  const submenu = {
     position: 'absolute',
     top: '80px',
     width: '100%',
     height: '100%',
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    display:isHover?'flex':'none',
-    zIndex:2
+    display: isHover ? 'flex' : 'none',
+    zIndex: 2
   }
 
 
 
-/////////////// data ////////////
+  /////////////// data ////////////
 
   const categories = props.data
-  const productcount=useSelector(state=>state.productIncrementReducer.prodcount)
- 
+  const productcount = useSelector(state => state.productIncrementReducer.prodcount)
+
   const groupBy = (array, key) => {
     // Return the end result
     return array.reduce((result, currentValue) => {
@@ -165,35 +165,35 @@ export default function Navbar(props) {
   };
 
   const result = groupBy(categories, 'parentId');
-  const [currentparent,setCurrentParent] =useState(null)
-  
-    const persistedState=localStorage.getItem('parseData');
-    console.log(JSON.stringify(persistedState));
+  const [currentparent, setCurrentParent] = useState(null)
+
+  const persistedState = localStorage.getItem('parseData');
+  console.log(JSON.stringify(persistedState));
 
   // hovering data
 
-  const fetchid=(event)=>{
-    let child=event.target.getAttribute('childId')
-    let parent=event.target.getAttribute('parentId')
+  const fetchid = (event) => {
+    let child = event.target.getAttribute('childId')
+    let parent = event.target.getAttribute('parentId')
 
-    currentparent===parent?setcards(cards.pop()):setCurrentParent(parent)
-      
-    
-    const found=cards.some(e=>e.parent===parent)
-    if(!found){
-      setcards(cards.concat({parent,child}))
-    }else{
+    currentparent === parent ? setcards(cards.pop()) : setCurrentParent(parent)
+
+
+    const found = cards.some(e => e.parent === parent)
+    if (!found) {
+      setcards(cards.concat({ parent, child }))
+    } else {
       console.log('yes there was duplicate')
       setcards(cards.pop())
-      setcards(cards.concat({parent,child}))
-      
+      setcards(cards.concat({ parent, child }))
+
     }
 
 
-    
-      
-   
-   
+
+
+
+
   }
 
 
@@ -201,36 +201,36 @@ export default function Navbar(props) {
 
   const card = (key) => {
     return (
-      
-      
 
-        result[key]?.map((element) => {
-          return (
-            <a className="nav-link" onMouseEnter={fetchid}  href={element.childId} id='dropdown_item' parentId={element.parentId} childId={element.childId} key={element.childId} > {element.name}<span style={{ float: 'right',listStyle:'none'}}><i></i></span></a>
-          )
 
-        }))
+
+      result[key]?.map((element) => {
+        return (
+          <a className="nav-link" onMouseEnter={fetchid} href={element.childId} id='dropdown_item' parentId={element.parentId} childId={element.childId} key={element.childId} > {element.name}<span style={{ float: 'right', listStyle: 'none' }}><i></i></span></a>
+        )
+
+      }))
   }
 
 
 
 
 
-function Card(props) {
-  if (result[props.card]){
-    return (
-      <div style={{paddingLeft:'1%'}}>
-        <div class="card">
-        {card(props.card)}
+  function Card(props) {
+    if (result[props.card]) {
+      return (
+        <div style={{ paddingLeft: '1%' }}>
+          <div class="card">
+            {card(props.card)}
+          </div>
         </div>
-      </div>
-    
-  
-    )
+
+
+      )
+
+    }
 
   }
-
-}
 
 
 
@@ -269,7 +269,7 @@ function Card(props) {
 
         <div className="container-fluid">
 
-          <i className="bi bi-list px-1" role="button"  onClick={handleMouseEnter}  style={{ ...baseTextColor, fontSize: '20px' }}></i>
+          <i className="bi bi-list px-1" role="button" onClick={handleMouseEnter} style={{ ...baseTextColor, fontSize: '20px' }}></i>
 
 
           <Link className="navbar-brand text-white" to="/"><img src='Logo-v3 1.png'></img></Link>
@@ -297,23 +297,23 @@ function Card(props) {
             <div className='d-flex' style={navbar_rightarea}>
               <span className='' style={right_icons}>
                 <span onClick={toggleSearchHandler}>
-                  
+
                   <i className='bi-search text-white' ></i>
                 </span>
 
                 <i className="bi bi-whatsapp text-success"></i>
-                <span style={{position:'relative'}}>
-                  {productcount>=1?<span class="badge badge-pill badge-primary" style={{position:'absolute',top:-5,left:'10px'}}>{productcount}</span>:""}
+                <span style={{ position: 'relative' }}>
+                  {productcount >= 1 ? <span class="badge badge-pill badge-primary" style={{ position: 'absolute', top: -5, left: '10px' }}>{productcount}</span> : ""}
                   <Link to="/addtocart"><i className="bi bi-cart text-white"></i></Link>
                 </span>
-                
+
               </span>
               <span style={right_button}>
                 <Routes>
-                  <Route path="/" element={<Loginbutton/>} />
-                  <Route path="/notfound" element={<Accounts/>} />
+                  <Route path="/" element={<Loginbutton />} />
+                  <Route path="/notfound" element={<Accounts />} />
                 </Routes>
-                
+
 
               </span>
 
@@ -324,19 +324,19 @@ function Card(props) {
         </div>
       </nav>
       <div className='submenu' onClick={handleMouseLeave} style={submenu}>
-        
-            <div class="card" >
-            <h3>Categories</h3>
-            {card(1)}
-            </div>
-            {
-              cards.map((e)=>{
-                return <Card card={e.child}/>
-              })
-            }
-           
-              
-      
+
+        <div class="card" >
+          <h3>Categories</h3>
+          {card(1)}
+        </div>
+        {
+          cards.map((e) => {
+            return <Card card={e.child} />
+          })
+        }
+
+
+
       </div>
 
 

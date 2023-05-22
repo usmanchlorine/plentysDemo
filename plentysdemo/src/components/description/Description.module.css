@@ -1,0 +1,15 @@
+.heading {
+  color: white;
+}
+
+.maincontainer {
+  display: flex;
+  flex-direction: column;
+  padding-left: 10%;
+  height: 100%;
+  justify-content: center;
+}
+
+.maincontainer div h1 {
+  padding-top: 2em;
+}

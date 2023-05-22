@@ -1,0 +1,104 @@
+.card {
+  border: none;
+  overflow: hidden;
+  background-color: #ecedee;
+}
+.thumbnail_images ul {
+  list-style: none;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.bi-star {
+  color: yellow;
+}
+#addtocart {
+  border-radius: 10px !important;
+}
+
+.headingprice {
+  color: #284975 !important;
+  font-size: 32px;
+}
+.heading {
+  color: #0b223f !important;
+  font-size: 48px;
+}
+
+.thumbnail_images ul li {
+  margin: 5px;
+  padding: 10px;
+  border: 2px solid #eee;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+.thumbnail_images ul li:hover {
+  border: 2px solid #0b223f;
+}
+.main_image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  height: 400px;
+  width: 100%;
+  overflow: hidden;
+}
+.heart {
+  height: 29px;
+  width: 29px;
+  background-color: #eaeaea;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.content p {
+  font-size: 12px;
+}
+.ratings span {
+  font-size: 14px;
+  margin-left: 12px;
+}
+.colors {
+  margin-top: 5px;
+}
+.colors ul {
+  list-style: none;
+  display: flex;
+  padding-left: 0px;
+}
+.colors ul li {
+  height: 20px;
+  width: 20px;
+  display: flex;
+  border-radius: 50%;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.colors ul li {
+  size: 2em;
+}
+
+#marker * {
+  width: 40px;
+  height: 40px;
+
+  padding: 20px !important;
+}
+
+.right-side {
+  position: relative;
+}
+.buttons .btn {
+  height: 50px;
+  width: 150px;
+  border-radius: 0px !important;
+}
