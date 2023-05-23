@@ -4,7 +4,8 @@ import './Navbar.css';
 import styles from '../CSSModules/Navbar.module.css'
 import { groupBy } from "core-js/actual/array/group-by";
 import { Link, Routes, Route } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import GetallCards from '../state/Actions/GetallCards';
 export default function Navbar(props) {
   const navbar_header = {
     height: '80px',
@@ -206,7 +207,7 @@ export default function Navbar(props) {
 
       result[key]?.map((element) => {
         return (
-          <a className="nav-link" onMouseEnter={fetchid} href={element.childId} id='dropdown_item' parentId={element.parentId} childId={element.childId} key={element.childId} > {element.name}<span style={{ float: 'right', listStyle: 'none' }}><i></i></span></a>
+          <Link className="nav-link" onClick={()=>dispatch(GetallCards(element.childId))} onMouseEnter={fetchid} to={'/allCards'} id='dropdown_item' parentId={element.parentId} childId={element.childId} key={element.childId} > {element.name}<span style={{ float: 'right', listStyle: 'none' }}><i></i></span></Link>
         )
 
       }))
@@ -235,7 +236,7 @@ export default function Navbar(props) {
 
 
 
-
+  const dispatch=useDispatch()
 
 
 
@@ -331,7 +332,8 @@ export default function Navbar(props) {
         </div>
         {
           cards.map((e) => {
-            return <Card card={e.child} />
+            return <Card onClick={()=>{dispatch(GetallCards(e.child));
+            }}  card={e.child} />
           })
         }
 

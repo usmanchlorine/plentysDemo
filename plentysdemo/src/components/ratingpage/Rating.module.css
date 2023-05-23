@@ -1,0 +1,101 @@
+.uppersection {
+  gap: 15%;
+  align-items: center;
+  padding-top: 5%;
+}
+
+.ratingReview {
+  font-size: 48px;
+  color: #284975;
+}
+
+.writeReview {
+  padding: 12px 5em;
+  background-color: #009fd1;
+  border-radius: 10px;
+  font-weight: 600;
+  color: white;
+}
+
+.rate {
+  float: left;
+  height: 46px;
+  padding: 0px 0px;
+}
+.rate:not(:checked) > input {
+  position: absolute;
+  left: -9999px;
+}
+.rate:not(:checked) > label {
+  float: right;
+  width: 1em;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 30px;
+  color: #ccc;
+}
+.rate:not(:checked) > label:before {
+  content: "★ ";
+}
+.rate > input:checked ~ label {
+  color: #ffc700;
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+  color: #deb217;
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+  color: #c59b08;
+}
+
+.ratingheading {
+  font-weight: 600;
+  font-size: 20px;
+  margin-bottom: 0px;
+}
+
+.inputrating {
+  width: 100%;
+
+  border: 1px solid #009fd1;
+  padding: 10px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.inputrating:focus {
+  outline: 3px solid#009fd1;
+}
+
+.inputrating::placeholder {
+  color: #94a3b8;
+  font-size: 1.2rem;
+  padding: 0.2rem;
+}
+
+
+@media screen and (max-width: 768px) {
+  .uppersection {
+    gap: 6%;
+    align-items: center;
+    padding-top: 5%;
+  }
+
+  .ratingReview {
+    font-size: 28px;
+    color: #284975;
+  }
+
+  .writeReview {
+    padding: 12px 2em;
+    background-color: #009fd1;
+    border-radius: 10px;
+    font-weight: 600;
+    color: white;
+  }
+}

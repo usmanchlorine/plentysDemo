@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import './Product.css'
-import Description from '../../components/description/Description'
+
+import Ratingpage from '../../components/ratingpage/Ratingpage'
+import PageDescription from '../../components/PageDescription/PageDescription'
+
 export default function ProductDetail() {
     const changeImage = (event) => {
         console.log('hello')
@@ -27,14 +30,13 @@ export default function ProductDetail() {
                 <div class="row">
                     <div class="col-md-6  border-end">
                         <div class="d-flex flex-column justify-content-center">
-                            <div class="main_image"> <img src="https://i.imgur.com/TAzli1U.jpg" id="main_product_image" width="350" />
+                            <div class="main_image"> <img src="https://plentyspkimages.s3.amazonaws.com/1672399460706premium_basmati_rice_5_kg_flakpremum_golden_05_kg_khi_01_1_jpg" id="main_product_image" width="350" />
                             </div>
                             <div class="thumbnail_images">
                                 <ul id="thumbnail">
-                                    <li><img onClick={changeImage} src="https://i.imgur.com/TAzli1U.jpg" width="70" /></li>
-                                    <li><img onClick={changeImage} src="https://i.imgur.com/w6kEctd.jpg" width="70" /></li>
-                                    <li><img onClick={changeImage} src="https://i.imgur.com/L7hFD8X.jpg" width="70" /></li>
-                                    <li><img onClick={changeImage} src="https://i.imgur.com/6ZufmNS.jpg" width="70" /></li>
+                                    <li><img onClick={changeImage} src="https://plentyspkimages.s3.amazonaws.com/1666788626539fortifed_chakki_atta_5_kg_sndrigeata_orangee_05_kg_khi_01_jpg" width="70" /></li>
+                                    <li><img onClick={changeImage} src="https://plentyspkimages.s3.amazonaws.com/1672399460706premium_basmati_rice_5_kg_flakpremum_golden_05_kg_khi_01_1_jpg" width="70" /></li>
+
                                 </ul>
                             </div>
                         </div>
@@ -91,8 +93,8 @@ export default function ProductDetail() {
 
 
             </div>
-
-            <Description />
+            <PageDescription />
+            <Ratingpage />
         </>
 
 
