@@ -1,0 +1,45 @@
+.heading {
+  color: #284975;
+}
+
+.heading h5 {
+  color: #94a3b8;
+}
+
+.mainsection {
+  margin-top: -3em;
+}
+
+.phonenumber {
+  display: flex;
+  align-items: center;
+
+  width: 100% !important;
+  border-radius: 5px;
+}
+
+.phonenumber > * {
+  width: 100%;
+  padding-left: 0.5em;
+}
+
+.phonenumber > * > * {
+  outline: none;
+  border: none;
+}
+
+@keyframes example {
+  50% {
+    margin-top: -200px !important;
+  }
+  100% {
+    margin-top: 0px !important;
+  }
+}
+
+.image {
+  animation-name: example !important;
+  animation-duration: 4s;
+  animation-timing-function: ease-in-out;
+  transition: 4s;
+}

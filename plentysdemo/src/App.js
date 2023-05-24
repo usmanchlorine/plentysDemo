@@ -12,6 +12,7 @@ import { useDispatch } from 'react-redux';
 import AllProductcards from './pages/AllProductcards';
 import Signup from './pages/SignupPage/Signup';
 import ProductDetail from './pages/ProductDetail/ProductDetail';
+import RegisterPage from './pages/RegisterPage/RegisterPage';
 
 
 function App() {
@@ -57,6 +58,7 @@ function App() {
         <Route path="/allCards" element={<AllProductcards />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/productdetail" element={<ProductDetail />} />
+        <Route path="/register" element={<RegisterPage />} />
       </Routes>
       <Footer />
 

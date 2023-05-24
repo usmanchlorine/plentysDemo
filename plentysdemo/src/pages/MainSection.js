@@ -32,6 +32,13 @@ export default function MainSection(prop) {
   }, [topCategories_id1])
 
 
+  useEffect(() => {
+    window.scroll({
+      top: 0,
+      left: 0,
+    })
+
+  }, [])
 
 
 

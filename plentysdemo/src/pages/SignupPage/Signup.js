@@ -94,8 +94,9 @@ export default function Signup() {
 
                                 <input type='submit' className='btn-accounts' value={'login'} />
 
-                                <button type="button" className="btn btn-accounts mt-2"
-                                    style={{ paddingLeft: '2.5rem', paddingRight: '2.5rem' }}>Register</button>
+                                <Link to={'/register'}>
+                                    <button type="button" className="btn btn-accounts mt-2"
+                                        style={{ paddingLeft: '2.5rem', paddingRight: '2.5rem' }}>Register</button></Link>
 
                             </div>
 
