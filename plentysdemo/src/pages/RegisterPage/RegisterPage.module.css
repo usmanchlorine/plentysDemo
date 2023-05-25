@@ -30,7 +30,7 @@
 
 @keyframes example {
   50% {
-    margin-top: -200px !important;
+    margin-top: -100px !important;
   }
   100% {
     margin-top: 0px !important;
@@ -40,6 +40,10 @@
 .image {
   animation-name: example !important;
   animation-duration: 4s;
-  animation-timing-function: ease-in-out;
-  transition: 4s;
+}
+
+.labelinputs {
+  font-weight: 600;
+  font-size: 14px;
+  color: #0b223f;
 }

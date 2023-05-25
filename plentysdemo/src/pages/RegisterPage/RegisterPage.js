@@ -5,10 +5,24 @@ import { useForm } from 'react-hook-form';
 import { DevTool } from '@hookform/devtools'
 import 'react-phone-number-input/style.css'
 import PhoneInput from 'react-phone-number-input'
-
+import 'animate.css';
+var validator = require('validator');
 
 
 export default function RegisterPage() {
+
+    const seepassword = () => {
+        console.log('hello field')
+        let passwordfield = document.getElementById('form3Example4')
+        console.log(passwordfield)
+        if (passwordfield.type === 'password') {
+            passwordfield.type = "text"
+            passwordfield.setAttribute('type', 'text')
+        } else {
+            passwordfield.type = 'password'
+        }
+
+    }
 
     const form = useForm({
 
@@ -36,7 +50,7 @@ export default function RegisterPage() {
                         <form noValidate onSubmit={handleSubmit(onSubmit)}>
 
                             <div className="form-outline mb-2">
-
+                                <label className={' ' + styles.labelinputs}>Full Name</label>
                                 <input type="text" id="form3Example3" name='fullname' {...register('fullname', {
                                     required: "fullname should not be empty",
                                     minLength: {
@@ -59,6 +73,7 @@ export default function RegisterPage() {
                             </div>
 
                             <div className={'form-outline mb-2 ' + styles.phonenumber}>
+
                                 <PhoneInput
                                     className="form-control form-control-lg"
                                     international
@@ -70,6 +85,10 @@ export default function RegisterPage() {
                                         maxLength: {
                                             value: '16',
                                             message: "phone number must be in range"
+                                        },
+                                        minLength: {
+                                            value: '10',
+                                            message: "phone number must be in range"
                                         }
                                     })}
                                     style={{ border: `${errors.phoneNumber ? "2px solid red" : ''}` }}
@@ -79,7 +98,7 @@ export default function RegisterPage() {
                             <label className="form-label" for="form3Example3" style={{ color: 'red' }}>{errors.phoneNumber?.message}</label>
 
                             <div className="form-outline mb-4">
-
+                                <label className={' ' + styles.labelinputs}>Email</label>
                                 <input type="email" id="form3Example3" name='email' {...register('email', {
                                     required: "email should be provided",
                                     pattern: {
@@ -105,24 +124,29 @@ export default function RegisterPage() {
 
 
                             <div className="form-outline mb-3">
-                                <input type="password" id="form3Example4" name='password'{...register('password', {
-                                    required: "Password must be provided",
-                                    minLength: {
-                                        value: '8',
-                                        message: 'Please enter atleast 8 characters',
-                                    }
+                                <label className={' ' + styles.labelinputs}>Password</label>
+                                <span className='d-flex align-items-center' style={{ position: 'relative' }}>
+                                    <input type="password" id="form3Example4" name='password'{...register('password', {
+                                        required: "Password must be provided",
+                                        minLength: {
+                                            value: '8',
+                                            message: 'Please enter atleast 8 characters',
+                                        }
 
 
 
-                                })} className="form-control form-control-lg"
-                                    placeholder="Enter password"
-                                    style={{ border: `${errors.password ? "2px solid red" : ''}` }} />
+
+                                    })} className="form-control form-control-lg"
+                                        placeholder="Enter password"
+                                        onChange={(e) => setValue(e.target.value)}
+                                        style={{ border: `${errors.password ? "2px solid red" : ""}` }} /> <i className='bi bi-eye' onClick={() => seepassword()} style={{ position: 'absolute', right: '10px', cursor: 'pointer' }} /></span>
                                 <label className="form-label" for="form3Example3" style={{ color: 'red' }}>{errors.password?.message}</label>
-                                <a href="#!" className="text-body float-right">Forgot password?</a>
+
                             </div>
 
 
                             <div className="form-outline mb-3">
+                                <label className={' ' + styles.labelinputs}>Confirm Password</label>
                                 <input type="password" id="form3Example4" name='confirmpassword'{...register('confirmpassword', {
                                     required: "Password must be provided",
                                     minLength: {
@@ -149,12 +173,17 @@ export default function RegisterPage() {
 
                                 <input type='submit' className='btn-accounts' style={{ borderRadius: '10px', width: '100%' }} value={'Signup'} />
 
-                                <div className='d-flex gap-2'>
+                                <div className='d-flex gap-2 mt-2'>
                                     <button type="button" className={"btn  w-50 mt-2 " + styles.socialLinks}
-                                        style={{ paddingLeft: '1rem', paddingRight: '1rem', border: '1px solid #94A3B8' }}>Signup with Google</button>
+                                        style={{ paddingLeft: '1rem', paddingRight: '1rem', border: '1px solid #94A3B8' }}><i className='bi bi-google px-2'></i>Signup with Google</button>
 
                                     <button type="button" className="btn   w-50 mt-2"
-                                        style={{ paddingLeft: '1rem', paddingRight: '1rem', border: '1px solid #94A3B8' }}>Signup with Facebook</button>
+                                        style={{ paddingLeft: '1rem', paddingRight: '1rem', border: '1px solid #94A3B8' }}><i className='bi bi-facebook px-2'></i>Signup with Facebook</button>
+
+                                </div>
+
+                                <div className='d-flex justify-content-center mt-3'>
+                                    <label className={' ' + styles.labelinputs}>Already have an account? <Link className='' to={'/signup'} style={{ color: '#009FD1' }} >Sign in</Link></label>
 
                                 </div>
 
@@ -165,10 +194,11 @@ export default function RegisterPage() {
 
                         <DevTool control={control} />
                     </div>
-                    <div className={"col-md-9 col-lg-6 col-xl-5 " + styles.image}>
+                    <div className={"col-md-9 col-lg-6 col-xl-5 "}>
                         <img src="Artwork.png"
-                            className={"img-fluid " + styles.image} alt="Sample image" />
+                            className={"img-fluid animate__animated animate__shakeY animate__slower 10s animate__infinite	infinite "} alt="Sample image" />
                     </div>
+
                 </div>
             </div>
 
