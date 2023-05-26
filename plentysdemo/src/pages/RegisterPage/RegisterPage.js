@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useRevalidator } from 'react-router-dom'
 import styles from './RegisterPage.module.css'
 import { useForm } from 'react-hook-form';
 import { DevTool } from '@hookform/devtools'
 import 'react-phone-number-input/style.css'
 import PhoneInput from 'react-phone-number-input'
 import 'animate.css';
+import { userServiceCall } from '../../state/Actions/UserApi';
 var validator = require('validator');
 
 
@@ -27,11 +28,23 @@ export default function RegisterPage() {
     const form = useForm({
 
     })
-    const { register, control, handleSubmit, formState } = form;
+    const { register, control, handleSubmit, formState, setError } = form;
     const { errors } = formState
 
-    const onSubmit = (data) => {
-        alert(JSON.stringify(data))
+    const onSubmit = async (userdata) => {
+        const data = {
+            fullname: userdata.fullname,
+            password: userdata.password,
+            email: userdata.email,
+            number: userdata.phoneNumber,
+        }
+        console.log(JSON.stringify(data))
+
+        const response = await userServiceCall('post', 'createuser', data);
+        alert(response)
+        setError("email", { /// setting error custom in this case its server error 
+            message: response
+        })
     }
     const [value, setValue] = useState()
 
