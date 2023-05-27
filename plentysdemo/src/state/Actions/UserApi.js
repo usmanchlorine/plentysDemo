@@ -1,11 +1,8 @@
-import { json } from "react-router-dom";
+
 
 
 let userServiceCall = async (method, endpoint, data) => {
     try {
-
-
-
         const apiUrl = `http://localhost:5000/api/auth/${endpoint}`
         let response = await fetch(apiUrl, {
             method: method,
@@ -18,7 +15,7 @@ let userServiceCall = async (method, endpoint, data) => {
 
         let payload = await response.json();
 
-        return payload.message
+        return payload
 
 
 

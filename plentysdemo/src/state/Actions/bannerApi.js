@@ -1,5 +1,3 @@
-import { useDispatch } from "react-redux";
-import { useState } from "react";
 
 const GET_BANNERS = 'GETBANNERS';
 

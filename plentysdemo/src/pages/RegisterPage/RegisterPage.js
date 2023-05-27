@@ -41,10 +41,22 @@ export default function RegisterPage() {
         console.log(JSON.stringify(data))
 
         const response = await userServiceCall('post', 'createuser', data);
-        alert(response)
-        setError("email", { /// setting error custom in this case its server error 
-            message: response
-        })
+
+        if (response.status == 400) {
+            switch (response.field) {
+                case 'email':
+                    setError("email", { /// setting error custom in this case its server error 
+                        message: response.message
+                    })
+                    break
+
+            }
+
+
+        } else {
+            alert(response.message);
+        }
+
     }
     const [value, setValue] = useState()
 

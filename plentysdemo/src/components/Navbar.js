@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import './Navbar.css';
 import styles from '../CSSModules/Navbar.module.css'
 import { groupBy } from "core-js/actual/array/group-by";
-import { Link, Routes, Route } from 'react-router-dom';
+import { Link, Routes, Route, redirect, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import GetallCards from '../state/Actions/GetallCards';
 export default function Navbar(props) {
@@ -39,6 +39,7 @@ export default function Navbar(props) {
     alignItems: 'center',
     justifyContent: 'Center',
     height: '100%',
+
   }
 
 
@@ -207,7 +208,7 @@ export default function Navbar(props) {
 
       result[key]?.map((element) => {
         return (
-          <Link className="nav-link" onClick={()=>dispatch(GetallCards(element.childId))} onMouseEnter={fetchid} to={'/allCards'} id='dropdown_item' parentId={element.parentId} childId={element.childId} key={element.childId} > {element.name}<span style={{ float: 'right', listStyle: 'none' }}><i></i></span></Link>
+          <Link className="nav-link" onClick={() => dispatch(GetallCards(element.childId))} onMouseEnter={fetchid} to={'/allCards'} id='dropdown_item' parentId={element.parentId} childId={element.childId} key={element.childId} > {element.name}<span style={{ float: 'right', listStyle: 'none' }}><i></i></span></Link>
         )
 
       }))
@@ -236,11 +237,34 @@ export default function Navbar(props) {
 
 
 
-  const dispatch=useDispatch()
+  const dispatch = useDispatch()
 
 
 
 
+
+  const [serchvalue, setSearchValue] = useState('')
+  const nevigate = useNavigate()
+  const serachHandler = (e) => {
+
+    setSearchValue(e.target.value)
+
+
+  }
+
+  const enter = (e) => {
+
+    if (e.key == "Enter") {
+      dispatch(GetallCards(1, serchvalue))
+      setTimeout(() => {
+        nevigate("/allcards")
+      }, 1000)
+
+
+
+    }
+
+  }
 
 
 
@@ -249,14 +273,14 @@ export default function Navbar(props) {
   return (
     <>
       {/*container when close*/}
-      <div className='container-fluid' id="SearchContainer" style={{ ...navbar_header, ...SearchContainer }}>
-        <div className='Container' style={{ ...searchTextContainer }}>
+      <div className='container-fluid d-flex justify-content-center' id="SearchContainer" style={{ ...navbar_header, ...SearchContainer }}>
+        <div className='Container d-flex justify-content-center w-50 ' style={{ ...searchTextContainer }}>
 
-          <div className='' style={{ backgroundColor: 'white', width: '50%' }}>
+          <div className='d-flex flex-grow-1 justify-content-around align-items-center rounded-2 h-50' style={{ backgroundColor: 'white', }}>
 
-            <i className='bi bi-search px-2' style={{ width: '10%', color: '#94A3B8' }}></i>
-            <input className='border-0 px-3' type='text' id="searchContent" style={searchInput} placeholder="Search" />
-            <i className='' onClick={toggleSearchHandler} style={{ float: 'right', width: '5%', boxShadow: 'none' }}><img src='Icon (Stroke).png'></img></i>
+            <i className='bi bi-search px-2' style={{ color: '#94A3B8' }}></i>
+            <input className='border-0 px-3 flex-grow-1' type='text' id="searchContent" style={searchInput} value={serchvalue} onKeyDown={enter} onChange={serachHandler} placeholder="Search" />
+            <i className='' onClick={toggleSearchHandler} style={{ marginRight: '1em', boxShadow: 'none' }}><img src='Icon (Stroke).png'></img></i>
           </div>
 
 
@@ -332,14 +356,18 @@ export default function Navbar(props) {
         </div>
         {
           cards.map((e) => {
-            return <Card onClick={()=>{dispatch(GetallCards(e.child));
-            }}  card={e.child} />
+            return <Card onClick={() => {
+              dispatch(GetallCards(e.child));
+            }} card={e.child} />
           })
         }
 
 
 
       </div>
+      <marquee style={{
+        backgroundColor: 'gold', margin: '0px !important', padding: '0px !important', fontWeight: '600', background: 'linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,215,0,1) 5%, rgba(255,215,0,1) 95%, rgba(255,255,255,1) 100%)'
+      }}>Scroll Karo Shop Karo</marquee>
 
 
     </>

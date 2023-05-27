@@ -1,16 +1,36 @@
 import { GETALLCARDS } from "./showAllCardsAction";
 
-let GetallCards = (cartegoryid) => {
+let GetallCards = (cartegoryid, serchtext = '') => {
     // const [bannerData,setBannerData] = useState([])
+    // const parseSerchtext = (parsedata, serchtext) => {
+
+    //     return parsedata.filter((products) => {
+    //         return products.title.startsWith(serchtext)
+    //     })
+
+    // }
+
+
 
     try {
         return async dispatch => {
-            let response = await fetch(`https://api.plentys.pk/api/v1/public/product/search?title=/&categoryId=${cartegoryid}&minPrice=1&maxPrice=&productIds=&storeId=&storeName=%22PlentysMart%22&brandId=&rating=&conditionId=&discountValue=&promotionId=&&lookupShippingTypeId=&lookupAttributeValueIds=&freshBaazar=&exactDiscount=&cityId=1&orderBy=stockDesc&limit=60&page=1`,
+            let response = await fetch(`https://api.plentys.pk/api/v1/public/product/search?title=${serchtext}/&categoryId=${cartegoryid}&minPrice=1&maxPrice=&productIds=&storeId=&storeName=%22PlentysMart%22&brandId=&rating=&conditionId=&discountValue=&promotionId=&&lookupShippingTypeId=&lookupAttributeValueIds=&freshBaazar=&exactDiscount=&cityId=1&orderBy=stockDesc&limit=60&page=1`,
                 {
                     method: 'GET',
 
                 });
-            let parsedata = await response.json()
+            var parsedata = (await response.json()).data
+            // if (serchtext.length > 0) {
+            //     console.log("searchtext chala hai")
+            //     parsedata = await parseSerchtext(parsedata, serchtext)
+            // }
+
+
+
+
+
+
+
 
 
             // localStorage.setItem('bannerData',JSON.stringify(parsedata.data))
@@ -18,7 +38,7 @@ let GetallCards = (cartegoryid) => {
             dispatch({
 
                 type: GETALLCARDS,
-                payload: parsedata.data,
+                payload: parsedata,
 
             })
 
