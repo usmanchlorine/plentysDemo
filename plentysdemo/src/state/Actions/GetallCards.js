@@ -1,6 +1,6 @@
 import { GETALLCARDS } from "./showAllCardsAction";
 
-let GetallCards = (cartegoryid, serchtext = '') => {
+let GetallCards = (cartegoryid, serchtext = '', page = '1') => {
     // const [bannerData,setBannerData] = useState([])
     // const parseSerchtext = (parsedata, serchtext) => {
 
@@ -14,7 +14,7 @@ let GetallCards = (cartegoryid, serchtext = '') => {
 
     try {
         return async dispatch => {
-            let response = await fetch(`https://api.plentys.pk/api/v1/public/product/search?title=${serchtext}/&categoryId=${cartegoryid}&minPrice=1&maxPrice=&productIds=&storeId=&storeName=%22PlentysMart%22&brandId=&rating=&conditionId=&discountValue=&promotionId=&&lookupShippingTypeId=&lookupAttributeValueIds=&freshBaazar=&exactDiscount=&cityId=1&orderBy=stockDesc&limit=60&page=1`,
+            let response = await fetch(`https://api.plentys.pk/api/v1/public/product/search?title=${serchtext}/&categoryId=${cartegoryid}&minPrice=1&maxPrice=&productIds=&storeId=&storeName=%22PlentysMart%22&brandId=&rating=&conditionId=&discountValue=&promotionId=&&lookupShippingTypeId=&lookupAttributeValueIds=&freshBaazar=&exactDiscount=&cityId=1&orderBy=stockDesc&limit=60&page=${page}`,
                 {
                     method: 'GET',
 

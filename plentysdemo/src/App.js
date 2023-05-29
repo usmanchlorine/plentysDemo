@@ -55,7 +55,7 @@ function App() {
         <Route path="/Notfound" element={<Page404 />} />
         <Route path="/" element={<MainSection data={data} />} />
         <Route path="/addtocart" element={<Addtocart />} />
-        <Route path="/allCards" element={<AllProductcards />} />
+        <Route path="/allCards/:id?" element={<AllProductcards />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/productdetail" element={<ProductDetail />} />
         <Route path="/register" element={<RegisterPage />} />

@@ -32,6 +32,15 @@ export default function RegisterPage() {
     const { errors } = formState
 
     const onSubmit = async (userdata) => {
+
+        if (userdata.password !== userdata.confirmpassword) {
+            return setError('confirmpassword', {
+                message: "paswords do not match"
+            })
+        }
+
+
+
         const data = {
             fullname: userdata.fullname,
             password: userdata.password,
@@ -59,7 +68,7 @@ export default function RegisterPage() {
 
     }
     const [value, setValue] = useState()
-
+    const [password, setPassword] = useState('')
 
     return (
 
@@ -183,7 +192,7 @@ export default function RegisterPage() {
 
                                 })} className="form-control form-control-lg"
                                     placeholder="Enter confirm password"
-                                    style={{ border: `${errors.password ? "2px solid red" : ''}` }} />
+                                    style={{ border: `${errors.confirmpassword ? "2px solid red" : ''}` }} />
                                 <label className="form-label" for="form3Example3" style={{ color: 'red' }}>{errors.confirmpassword?.message}</label>
                             </div>
 
