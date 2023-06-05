@@ -19,7 +19,7 @@ const Config = {
   key: 'root',
   storage,
   blacklist: [],// pass the reducers thats are zero while refreshed
-  whitelist: ['productIncrementReducer', 'getbannerReducer', 'getAllCardsReducer'] // pass the reducers that states are not become zero while refreshed  
+  whitelist: ['productIncrementReducer', 'getbannerReducer', 'getAllCardsReducer', 'GetProductDetailReducer'] // pass the reducers that states are not become zero while refreshed  
 };
 
 const persistedReducer = persistReducer(Config, allReducers);

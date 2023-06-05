@@ -54,7 +54,7 @@ export default function AllProductcards() {
     }, [])
     const allcards = useSelector(state => state.getAllCardsReducer.allcardsDATA)
     const [currentPage, setCurrentPage] = useState(localStorage.getItem('paginate') !== null ? parseInt(localStorage.getItem('paginate')) : 1)
-    const [cardsperPage, setcardsperPage] = useState(10)
+    const [cardsperPage, setcardsperPage] = useState(8)
 
     const indexofLastPage = currentPage * cardsperPage
     const indexofFirstPage = indexofLastPage - cardsperPage
@@ -62,14 +62,10 @@ export default function AllProductcards() {
 
 
     const Paginate = (value) => {
-
+        console.log("current", value)
         if (isNumber(value)) {
             localStorage.setItem('paginate', currentPage)
             setCurrentPage(value)
-        } else if (value === "Previous") {
-            setCurrentPage(currentPage - 1)
-        } else {
-            setCurrentPage(currentPage + 1)
         }
 
     }

@@ -57,8 +57,8 @@ function App() {
         <Route path="/addtocart" element={<Addtocart />} />
         <Route path="/allCards/:id?" element={<AllProductcards />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/productdetail" element={<ProductDetail />} />
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="/productdetail/:productId?" element={<ProductDetail />} />
       </Routes>
       <Footer />
 

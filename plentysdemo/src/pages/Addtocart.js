@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector, useStore } from 'react-redux'
 import ProdDecrement from '../state/Actions/ProdDecrementAction'
 import EmptyCart from '../components/EmptyCart'
+import Increment from '../components/increment/Increment'
 
 function NoProduct() {
   return (
@@ -39,20 +40,23 @@ export default function Addtocart() {
   const dispatch = useDispatch()
   const cartdata = useSelector(state => state.productIncrementReducer.prodIds)
 
+  const [render, setRender] = useState(true)
 
 
   useEffect(() => {
     let sum = 0;
     let numofItems = 0
     cartdata.forEach(item => {
-      sum += item.minPrice;
-      numofItems++;
+      sum += item.minPrice * (item.quantity);
+      numofItems = numofItems + (1 * item.quantity);
     })
     setTotalPrice(sum);
     setNumOfItems(numofItems);
-    console.log(sum)
+    dispatch({ type: 'QUANTITY', payload: cartdata })
 
-  }, [cartdata])
+
+
+  }, [cartdata, <Increment />])
 
   // const calculate = () => {
   //   let sum = 0;
@@ -65,6 +69,33 @@ export default function Addtocart() {
   //   setNumOfItems(numofItems);
   //   console.log(sum)
   // }
+
+  const quantityHandler = (title, action) => {
+    console.log("chala quanity handler", title, action)
+    if (action == 'PLUS') {
+      cartdata.forEach((product) => {
+        if (product.title == title) {
+          product.quantity += 1
+          setRender(!render)
+        }
+      })
+    }
+
+    if (action == 'MINUS') {
+      cartdata.forEach((product) => {
+        if (product.title == title) {
+          if (product.quantity > 1) {
+            product.quantity -= 1
+            setRender(!render)
+
+          }
+
+        }
+      })
+    }
+
+  }
+
   if (cartdata.length != 0) {
 
     return (
@@ -77,21 +108,25 @@ export default function Addtocart() {
                 <th scope="col">#</th>
                 <th scope="col">Product</th>
                 <th scope="col">Name</th>
+                <th scope="col">quantity</th>
                 <th scope="col">Price</th>
                 <th scope="col">Delete</th>
               </tr>
             </thead>
             <tbody>
               {
+
                 cartdata.length != 0
                   ?
                   cartdata.map((item, index) => {
 
                     return (
                       <tr key={index} className=''>
+                        {console.log("re render howa hai")}
                         <th scope="row">{index + 1}</th>
                         <td className='d-flex ' style={{ width: '100px', height: '100px' }}><img src={item.imageUrl} style={{ scale: '0.5', marginTop: '-2rem' }}></img></td>
                         <td>{item.title}</td>
+                        <td><Increment quantityHandler={quantityHandler} title={item.title} quantity={item.quantity} /></td>
                         <td>Rs {item.minPrice}</td>
                         <td><button className='btn btn-danger' onClick={() => dispatch(ProdDecrement(item.productId))}>Delete</button></td>
                       </tr>

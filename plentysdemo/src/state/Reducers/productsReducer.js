@@ -4,6 +4,7 @@ const initialState = {
     wholeSale: [],
     PlentysMart: [],
     BeautyGrooming: [],
+    
 }
 
 const productsReducer = (state = initialState, action) => {

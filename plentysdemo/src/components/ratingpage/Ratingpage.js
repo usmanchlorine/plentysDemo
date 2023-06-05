@@ -38,10 +38,10 @@ export default function Ratingpage() {
                     </div>
 
 
-                    <div className='mt-3'>
+                    <div className='mt-3' style={{ position: 'relative' }}>
                         <p className={' ' + styles.ratingheading}>Picture/Video (optional)</p>
-                        <label for="upload-photo"><img src='upload.png'></img></label>
-                        <input type="file" name="photo" id="upload-photo" style={{ visibility: 'hidden' }} />
+                        <label for="upload-photo"><img src='upload.png' style={{ zIndex: '100', backgroundColor: 'white' }}></img></label>
+                        <input type="file" name="photo" id="upload-photo" style={{ visibility: '', position: 'absolute', left: '1.5em', zIndex: "-2" }} />
 
                     </div>
 

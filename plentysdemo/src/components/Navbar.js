@@ -153,7 +153,7 @@ export default function Navbar(props) {
 
   const categories = props.data
   const productcount = useSelector(state => state.productIncrementReducer.prodcount)
-
+  console.log("this is productcount", productcount)
   const groupBy = (array, key) => {
     // Return the end result
     return array.reduce((result, currentValue) => {

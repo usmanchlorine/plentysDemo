@@ -4,6 +4,8 @@ import styles from './productcards.module.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Route } from 'react-router-dom';
 import { allCards } from '../../state/Actions/showAllCardsAction';
+import ProductDetail from '../../pages/ProductDetail/ProductDetail';
+import { ProductDetailAction } from '../../state/Actions/ProductDetailAction';
 const colorfill = (event) => {
     /// ternary operatos
     event.target.style.color === "red" ? event.target.style.color = "gray" : event.target.style.color = "red";
@@ -35,12 +37,17 @@ function Card(props) {
 
     return (
         <>
+
             <div className={` col-sm-12 col-md-6 col-lg-${props.col} mb-3`} >
+
                 <div className="card bg-white border-0 " style={{ width: '100%', height: '500px', position: 'relative' }}>
-                    <span class={"badge badge-danger " + styles.badge_discount}>{carddata.productCondition}</span>
-                    <span class={"badge badge-light " + styles.badge_discount2}><i onClick={colorfill} className="bi bi-heart-fill"></i></span>
-                    <img src={carddata.imageUrl}
-                        className={"card-img-top " + styles.imgcard} alt="Laptop" />
+                    <Link exact to={`/productdetail`} onClick={() => dispatch(ProductDetailAction(carddata))}>
+                        <span class={"badge badge-danger " + styles.badge_discount}>{carddata.productCondition}</span>
+                        <span class={"badge badge-light " + styles.badge_discount2}><i onClick={colorfill} className="bi bi-heart-fill"></i></span>
+                        <img src={carddata.imageUrl}
+                            className={"card-img-top " + styles.imgcard} alt="Laptop" />
+
+                    </Link>
                     <div className="card-body">
                         <div className="d-flex justify-content-between">
                             <h4 style={{ whiteSpace: 'nowrap' }}>{carddata.brand}</h4>
@@ -73,10 +80,11 @@ function Card(props) {
 
                         </div>
 
+
                         <div className="d-flex align-items-center mb-1">
                             {cartitems.some((cartitem) => cartitem.productId === carddata.productId)
                                 ? <button className='btn btn-success ' style={{ padding: '15px 30px', fontSize: '14px', fontWeight: 'bold' }}><Link to="/addtocart"><i className="bi bi-cart text-white">Go to cart</i></Link></button>
-                                : <button className='btn btn-warning' style={{ padding: '15px 30px', fontSize: '14px', fontWeight: 'bold' }} onClick={() => dispatch(ProdIncrement(carddata))}>Add to cart</button>
+                                : <button className='btn btn-warning' style={{ padding: '15px 30px', fontSize: '14px', fontWeight: 'bold' }} onClick={() => dispatch(ProdIncrement({ ...carddata, quantity: 1 }))}>Add to cart</button>
                             }
 
                             <div className='w-50 ' style={{ alignSelf: 'end', position: 'relative', height: 'inherit', minHeight: '50px' }} >
@@ -88,7 +96,9 @@ function Card(props) {
                         </div>
                     </div>
                 </div>
+
             </div>
+
         </>
     )
 }
