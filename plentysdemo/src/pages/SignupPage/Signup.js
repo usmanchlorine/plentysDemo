@@ -1,17 +1,36 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 import './singup.css'
 import { useForm } from 'react-hook-form';
 import { DevTool } from '@hookform/devtools'
+import { userServiceCall } from '../../state/Actions/UserApi';
+
 export default function Signup() {
+    const nevigate = useNavigate()
     const form = useForm({
 
     })
     const { register, control, handleSubmit, formState } = form;
     const { errors } = formState
 
-    const onSubmit = (data) => {
-        alert(JSON.stringify(data))
+    const onSubmit = async (data) => {
+        try {
+            const payload = await userServiceCall('post', 'login', data)
+            if (payload.user) {
+                alert(payload.user.username)
+                alert('Congratulations user is login successfully')
+                localStorage.setItem('token', payload.authtoken)
+                nevigate('/')
+
+
+            } else {
+                alert(payload.message)
+            }
+        }
+        catch (err) {
+
+            console.log(err)
+        }
     }
 
 

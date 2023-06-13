@@ -1,9 +1,7 @@
 import React from 'react'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import './Navbar.css';
-import styles from '../CSSModules/Navbar.module.css'
-import { groupBy } from "core-js/actual/array/group-by";
-import { Link, Routes, Route, redirect, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import GetallCards from '../state/Actions/GetallCards';
 export default function Navbar(props) {
@@ -90,10 +88,10 @@ export default function Navbar(props) {
     )
   }
 
-  function Accounts() {
+  function Accounts({ name }) {
     return (
       <>
-        <span><a><img src='user-circle.png'></img><p className='px-1 d-inline text-light py-3'>Accounts</p></a></span>
+        <span><a><img src='user-circle.png'></img><p className='px-1 d-inline text-light py-3'>{name}</p></a></span>
       </>
     )
   }
@@ -334,10 +332,9 @@ export default function Navbar(props) {
 
               </span>
               <span style={right_button}>
-                <Routes>
-                  <Route path="/" element={<Loginbutton />} />
-                  <Route path="/notfound" element={<Accounts />} />
-                </Routes>
+                {
+                  localStorage.getItem('username') ? <Accounts name={localStorage.getItem('username')} /> : <Loginbutton />
+                }
 
 
               </span>
@@ -366,8 +363,8 @@ export default function Navbar(props) {
 
       </div>
       <marquee style={{
-        backgroundColor: 'gold', margin: '0px !important', padding: '0px !important', fontWeight: '600', background: 'linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,215,0,1) 5%, rgba(255,215,0,1) 95%, rgba(255,255,255,1) 100%)'
-      }}>Scroll Karo Shop Karo</marquee>
+        backgroundColor: 'gold', fontWeight: '600', background: 'linear-gradient(90deg, rgba(249, 160, 26, 1) 0%, rgba(255,215,0,1) 5%, rgba(255,215,0,1) 95%, rgba(249, 160, 26, 1) 100%)'
+      }}>Scroll Karo Shop Karo - Download the app now </marquee>
 
 
     </>

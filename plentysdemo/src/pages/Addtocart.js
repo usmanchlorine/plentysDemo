@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector, useStore } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import ProdDecrement from '../state/Actions/ProdDecrementAction'
 import EmptyCart from '../components/EmptyCart'
 import Increment from '../components/increment/Increment'
